@@ -1,9 +1,10 @@
 window.onload = function(){
 
-
+var minutes = 0;
 var seconds = 0;
 var tens = 0;
 
+var appendMinutes = document.getElementById("minutes")
 var appendSeconds = document.getElementById("seconds");
 var appendTens = document.getElementById("tens")
 
@@ -15,7 +16,7 @@ var interval;
 
 buttonStart.onclick = function() {
     clearInterval(interval);
-    interval = setInterval(startTime, 10);
+    interval = setInterval(startTime, 0.5);
 }
 
 buttonStop.onclick = function(){
@@ -26,13 +27,15 @@ buttonReset.onclick = function(){
     clearInterval(interval);
     tens = "00";
     seconds = "00";
+    minutes = "00";
 
+    appendMinutes.innerHTML = minutes;    
     appendSeconds.innerHTML = seconds;
     appendTens.innerHTML = tens;
 }
 
 function startTime(){
-    tens++;
+    tens = tens + 30;
     if(tens <= 9){
         appendTens.innerHTML = "0" + tens;
     }
@@ -50,6 +53,18 @@ function startTime(){
     if (seconds > 9) {
         appendSeconds.innerHTML = seconds;
     }
+
+    if(seconds > 59){
+        minutes++;
+        appendMinutes.innerHTML = "0" + minutes;
+        seconds = 0;
+        appendSeconds.innerHTML = "0" + 0;
+    }
+    if (minutes > 9){
+       appendMinutes.innerHTML = minutes;
+    }
+
+
 }
 
 }
