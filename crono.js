@@ -16,7 +16,7 @@ var interval;
 
 buttonStart.onclick = function() {
     clearInterval(interval);
-    interval = setInterval(startTime, 0.5);
+    interval = setInterval(startTime, 10);
 }
 
 buttonStop.onclick = function(){
@@ -35,7 +35,7 @@ buttonReset.onclick = function(){
 }
 
 function startTime(){
-    tens = tens + 30;
+    tens++;
     if(tens <= 9){
         appendTens.innerHTML = "0" + tens;
     }
